@@ -7,14 +7,20 @@ const r1 = readline.createInterface({
     output: process.stdout,
 });
 
-function enterProducts(){
+function question(theQuestion) {
+
+return new Promise(resolve => rl.question(theQuestion, answ => resolve(answ)))
+
+}
+
+async function enterProducts(){
     let buyingData = {}
     let enterDetails = true
     while(enterDetails){
-        let details = prompt("Press A to add product and Q to quit")
+        let details = await question("Press A to add product and Q to quit \n")
         if(details === "A"){
-            let product = prompt("Enter product: ")
-            let quantity = int(prompt("Enter quantity: "))
+            let product = await question("Enter product: ")
+            let quantity = await int(question("Enter quantity: "))
             buyingData.update({product: quantity})
         }
         else if(details === "Q"){
@@ -70,7 +76,7 @@ function makebill(buyingData, membership){
     }
 }
 let mbuyingData = enterProducts()
-membership = prompt("Entercustomer membership: ")
+let async membership = await question("Entercustomer membership: ")
 makebill(buyingData, membership)
 
 
