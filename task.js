@@ -1,3 +1,11 @@
+// Import Readline Module from Node
+const readline = require("readline");
+
+//Create the interface for input and output 
+const r1 = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
 
 function enterProducts(){
     let buyingData = {}
